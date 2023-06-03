@@ -18,7 +18,7 @@ const theme = createTheme({
     secondary: {
       main: "#7B809A",
     },
-    accent: {
+    action: {
       main: "#CC1931",
       contrastText: "#FFFFFF",
     },

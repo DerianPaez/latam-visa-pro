@@ -146,7 +146,7 @@ export default function Navigation() {
           <Box sx={{ flexGrow: 0 }}>
             <Button
               variant="contained"
-              color="accent"
+              color="action"
               sx={{ borderRadius: "8px" }}
             >
               whatsapp

@@ -1,8 +1,26 @@
-import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
-import { Facebook, Instagram, WhatsApp } from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import {
+  Facebook,
+  Instagram,
+  WhatsApp,
+  EmojiEventsOutlined,
+  HandshakeOutlined,
+  PlagiarismOutlined,
+  VerifiedUserOutlined,
+} from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
 import VisaCard from "../src/components/VisaCard";
+import CompanyValue from "../src/components/CompanyValue";
+
 export default function Home() {
   return (
     <>
@@ -67,7 +85,7 @@ export default function Home() {
             </Typography>
             <Button
               variant="contained"
-              color="accent"
+              color="action"
               sx={{
                 borderRadius: "8px",
                 width: "max-content",
@@ -160,6 +178,82 @@ export default function Home() {
               })}
             </Grid>
           </Container>
+
+          <Container component="section">
+            <Box
+              borderRadius="10px"
+              display="grid"
+              minHeight={{ xs: "intial", md: "400px" }}
+              sx={{
+                background: "linear-gradient(180deg, #42424A 0%, #191919 100%)",
+                gridTemplateColumns: { sx: "1fr", md: "1fr 1fr 1fr" },
+              }}
+            >
+              <Box
+                borderRadius="10px"
+                sx={{
+                  paddingLeft: { sx: "0", md: "30px" },
+                  height: "calc(100% + 16px + 16px)",
+                  margin: "-16px 0",
+                }}
+              >
+                <Image
+                  width={500}
+                  height={600}
+                  src="/images/about-us.jpg"
+                  alt="Sobre LatamVisaPro"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    display: "block",
+                    borderRadius:
+                      useMediaQuery((theme) => theme.breakpoints.up("md")) &&
+                      "10px",
+                  }}
+                />
+              </Box>
+              <Box
+                display="grid"
+                gap="20px"
+                padding="30px"
+                gridAutoRows="max-content"
+              >
+                <Typography
+                  variant="h4"
+                  component="h2"
+                  color="#FFF"
+                  fontWeight="bold"
+                >
+                  Acerca de nosotros
+                </Typography>
+                <Typography variant="subtitle1" color="#FFF">
+                  En LATAMVISAPRO, nos enorgullece ser tu socio confiable en el
+                  camino hacia tus metas internacionales.
+                </Typography>
+                <Typography variant="subtitle2" color="#FFF">
+                  Nos especializamos en brindar servicios de asesoría de visas
+                  de calidad, ayudando a nuestros clientes a navegar por el
+                  complejo proceso de solicitud de visas y hacer realidad sus
+                  sueños de viajar, estudiar o trabajar en el extranjero.
+                </Typography>
+              </Box>
+              <Box
+                display="grid"
+                gridTemplateColumns="1fr"
+                padding="30px"
+                gap="20px"
+                sx={{
+                  placeSelf: { xs: "initial", md: "center" },
+                }}
+              >
+                {companyValues.map(({ key, ...props }) => {
+                  return <CompanyValue key={key} {...props} />;
+                })}
+              </Box>
+            </Box>
+          </Container>
         </Paper>
       </Box>
     </>
@@ -205,5 +299,16 @@ const visaCardData = [
     paragraph:
       "Descubre emocionantes nuevos destinos y sumérgete en experiencias culturales únicas.",
     image: "/images/visa-turismo.jpg",
+  },
+];
+
+const companyValues = [
+  { key: "excelencia", label: "Excelencia", Icon: EmojiEventsOutlined },
+  { key: "confianza", label: "Confianza", Icon: VerifiedUserOutlined },
+  { key: "compromiso", label: "Compromiso", Icon: HandshakeOutlined },
+  {
+    key: "transparencia",
+    label: "Transparencia",
+    Icon: PlagiarismOutlined,
   },
 ];
