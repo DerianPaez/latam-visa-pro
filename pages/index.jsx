@@ -20,8 +20,16 @@ import Link from "next/link";
 import Image from "next/image";
 import VisaCard from "../src/components/VisaCard";
 import CompanyValue from "../src/components/CompanyValue";
+import AccordionItem from "../src/components/AccordionItem";
+import { useState } from "react";
 
 export default function Home() {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleChange = (panel) => (_event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
+
   return (
     <>
       <Container
@@ -179,7 +187,10 @@ export default function Home() {
             </Grid>
           </Container>
 
-          <Container component="section">
+          <Container
+            component="section"
+            sx={{ marginBottom: { xs: "", md: "16px" } }}
+          >
             <Box
               borderRadius="10px"
               display="grid"
@@ -208,9 +219,6 @@ export default function Home() {
                     objectFit: "cover",
                     objectPosition: "center",
                     display: "block",
-                    borderRadius:
-                      useMediaQuery((theme) => theme.breakpoints.up("md")) &&
-                      "10px",
                   }}
                 />
               </Box>
@@ -252,6 +260,49 @@ export default function Home() {
                   return <CompanyValue key={key} {...props} />;
                 })}
               </Box>
+            </Box>
+          </Container>
+
+          <Container component="section" sx={{ display: "grid", gap: "30px" }}>
+            <Box display="grid" gap="15px">
+              <Typography
+                variant="h4"
+                component="h1"
+                color="primary"
+                fontWeight="bold"
+                textAlign="center"
+                textTransform="capitalize"
+              >
+                Preguntas frecuentes
+              </Typography>
+              <Typography
+                color="secondary"
+                maxWidth="660px"
+                textAlign="center"
+                margin="0 auto"
+              >
+                En nuestra sección de Preguntas Frecuentes (FAQ), hemos
+                recopilado las respuestas a las consultas más comunes
+                relacionadas con los procesos de visas.
+              </Typography>
+            </Box>
+            <Box
+              display="grid"
+              gridTemplateColumns="1fr"
+              gridAutoRows="max-content"
+            >
+              {FAQ.map(({ key, question, answer }) => {
+                return (
+                  <AccordionItem
+                    key={key}
+                    id={key}
+                    title={question}
+                    description={answer}
+                    expanded={expanded}
+                    handleChange={handleChange}
+                  />
+                );
+              })}
             </Box>
           </Container>
         </Paper>
@@ -310,5 +361,97 @@ const companyValues = [
     key: "transparencia",
     label: "Transparencia",
     Icon: PlagiarismOutlined,
+  },
+];
+
+const FAQ = [
+  {
+    key: "001",
+    question: "¿Qué tipos de visas ofrecen asesoría?",
+    answer:
+      "Ofrecemos asesoría en visas de turismo, trabajo, estudio, negocios y visas familiares, entre otras.",
+  },
+  {
+    key: "002",
+    question: "¿Cuánto tiempo tarda el proceso de obtención de una visa?",
+    answer:
+      "El tiempo del proceso de obtención de una visa puede variar según el país de destino y el tipo de visa. En general, puede tomar de 2 a 24 semanas.",
+  },
+  {
+    key: "003",
+    question: "¿Cuáles son los requisitos para aplicar a una visa?",
+    answer:
+      "Los requisitos para aplicar a una visa varían dependiendo del tipo de visa y del país de destino. Por lo general, se requiere un pasaporte válido, formulario de solicitud, fotografía, evidencia de solvencia económica y otros documentos específicos.",
+  },
+  {
+    key: "004",
+    question: "¿Cuánto cuesta la asesoría de visas?",
+    answer:
+      "Nuestros precios de asesoría varían según el tipo de visa y la complejidad del caso. Por favor, contáctanos para obtener una cotización personalizada.",
+  },
+  {
+    key: "005",
+    question: "¿Necesito una cita para la asesoría?",
+    answer:
+      "Sí, recomendamos programar una cita para asegurar la disponibilidad de nuestros consultores y brindar un servicio personalizado.",
+  },
+  {
+    key: "006",
+    question: "¿Cuál es el proceso para solicitar una visa con su ayuda?",
+    answer:
+      "El proceso para solicitar una visa con nuestra ayuda incluye:\n1.	consulta inicial\n2.	evaluación de elegibilidad\n3.	preparación de documentos\n4.	revisión de la aplicación\n5.	seguimiento del proceso.",
+  },
+  {
+    key: "007",
+    question:
+      "¿Pueden ayudarme a completar los formularios de solicitud de visa?",
+    answer:
+      "Sí, nuestros expertos te ayudarán a completar correctamente los formularios de solicitud de visa.",
+  },
+  {
+    key: "008",
+    question: "¿Cuáles son los documentos necesarios para aplicar a una visa?",
+    answer:
+      "Los documentos necesarios para aplicar a una visa varían según el tipo de visa y el país de destino. Por lo general, se requiere un pasaporte válido, formulario de solicitud, fotografía, evidencia de solvencia económica y otros documentos específicos.",
+  },
+  {
+    key: "009",
+    question: "¿Tienen experiencia en casos de visas rechazadas?",
+    answer:
+      "Sí, tenemos experiencia en casos de visas rechazadas y podemos ofrecer asesoría en cómo mejorar tus posibilidades en una nueva solicitud.",
+  },
+  {
+    key: "010",
+    question:
+      "¿Cuál es la tasa de éxito en las solicitudes de visa que asesoran?",
+    answer:
+      "Nuestra tasa de éxito en las solicitudes de visa es alta debido a nuestra experiencia y conocimiento en los requerimientos de diferentes países y tipos de visas.",
+  },
+  {
+    key: "011",
+    question:
+      "¿Ofrecen asesoría en apelaciones o reconsideraciones en caso de rechazo?",
+    answer:
+      "Sí, ofrecemos asesoría en apelaciones o reconsideraciones en caso de rechazo de la visa, según las opciones disponibles para el tipo de visa y el país de destino.",
+  },
+  {
+    key: "012",
+    question:
+      "¿Pueden ayudarme a obtener una visa de trabajo, estudio o turismo?",
+    answer:
+      "Sí, podemos ayudarte a obtener visas de trabajo, estudio y turismo, así como otros tipos de visas según tus necesidades.",
+  },
+  {
+    key: "013",
+    question:
+      "¿Cuánto tiempo debo esperar antes de solicitar una visa después de un rechazo?¿Pueden ayudarme a obtener una visa de trabajo?",
+    answer:
+      "El tiempo de espera antes de volver a solicitar una visa después de un rechazo puede variar según el país y la razón del rechazo. Por lo general, se recomienda esperar de 3 a 6 meses y abordar las razones del rechazo antes de volver a aplicar.",
+  },
+  {
+    key: "014",
+    question: "¿Ofrecen asesoría para la renovación de visas?",
+    answer:
+      "Sí, ofrecemos asesoría para la renovación de visas, ayudándote a comprender los requisitos y a preparar los documentos necesarios.",
   },
 ];
