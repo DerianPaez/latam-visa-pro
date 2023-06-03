@@ -305,6 +305,31 @@ export default function Home() {
               })}
             </Box>
           </Container>
+
+          <Container component="section">
+            <Box
+              display="grid"
+              gridTemplateColumns="1fr max-content"
+              justifyContent="space-between"
+              padding="40px 45px"
+              borderRadius="10px"
+              sx={{
+                background: "linear-gradient(180deg, #42424A 0%, #191919 100%)",
+              }}
+            >
+              <Typography color="#FFF" maxWidth="660px">
+                En LATAMVISAPRO, nos enorgullece ser tu socio confiable en el
+                camino hacia tus metas internacionales.
+              </Typography>
+              <Button
+                variant="contained"
+                color="action"
+                sx={{ borderRadius: "8px" }}
+              >
+                Get Started
+              </Button>
+            </Box>
+          </Container>
         </Paper>
       </Box>
     </>
