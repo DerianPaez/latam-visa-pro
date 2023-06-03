@@ -309,7 +309,8 @@ export default function Home() {
           <Container component="section">
             <Box
               display="grid"
-              gridTemplateColumns="1fr max-content"
+              gridTemplateColumns={{ xs: "1fr", md: "1fr max-content" }}
+              gap="30px"
               justifyContent="space-between"
               padding="40px 45px"
               borderRadius="10px"
@@ -324,7 +325,7 @@ export default function Home() {
               <Button
                 variant="contained"
                 color="action"
-                sx={{ borderRadius: "8px" }}
+                sx={{ borderRadius: "8px", width: "max-content" }}
               >
                 Get Started
               </Button>
