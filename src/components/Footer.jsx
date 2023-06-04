@@ -4,7 +4,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <Container component="footer" sx={{ display: "grid", gap: "20px" }}>
+    <Container
+      component="footer"
+      sx={{ display: "grid", gap: "20px", padding: "50px 0" }}
+    >
       <Box
         sx={{
           textAlign: "center",
