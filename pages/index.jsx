@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Paper,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
 import {
   Facebook,
   Instagram,
@@ -15,6 +7,10 @@ import {
   HandshakeOutlined,
   PlagiarismOutlined,
   VerifiedUserOutlined,
+  Description,
+  Diversity3,
+  MonetizationOn,
+  HowToReg,
 } from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
@@ -22,6 +18,7 @@ import VisaCard from "../src/components/VisaCard";
 import CompanyValue from "../src/components/CompanyValue";
 import AccordionItem from "../src/components/AccordionItem";
 import { useState } from "react";
+import ServiceCard from "../src/components/serviceCard";
 
 export default function Home() {
   const [expanded, setExpanded] = useState(false);
@@ -139,9 +136,11 @@ export default function Home() {
             backdropFilter: "blur(20px)",
             borderRadius: "10px",
             padding: { xs: "60px 10px", sm: "90px 30px" },
+            display: "grid",
+            gap: "100px",
           }}
         >
-          <Container component="section" sx={{ display: "grid", gap: "30px" }}>
+          <Container component="section" sx={{ display: "grid", gap: "40px" }}>
             <Grid
               sx={{
                 display: "grid",
@@ -263,7 +262,59 @@ export default function Home() {
             </Box>
           </Container>
 
-          <Container component="section" sx={{ display: "grid", gap: "30px" }}>
+          <Container component="section" sx={{ display: "grid", gap: "40px" }}>
+            <Grid
+              sx={{
+                display: "grid",
+                gap: "15px",
+                placeContent: "center",
+              }}
+            >
+              <Typography
+                variant="h4"
+                component="h2"
+                color="primary"
+                fontWeight="bold"
+                textAlign="center"
+              >
+                Nuestros servicios de asesoría de visas
+              </Typography>
+              <Typography
+                component="p"
+                color="secondary"
+                textAlign="center"
+                sx={{ maxWidth: "660px", margin: "0 auto" }}
+              >
+                Ofrecemos una amplia gama de servicios de asesoría de visas
+                diseñados para hacer realidad tus aspiraciones internacionales.
+              </Typography>
+            </Grid>
+            <Grid
+              sx={{
+                display: "grid",
+                gap: "50px",
+                gridTemplateColumns: {
+                  xs: "1fr",
+                  sm: "1fr 1fr",
+                },
+                placeContent: "center",
+                padding: { xs: 0, md: "0 50px", xl: "0 80px" },
+              }}
+            >
+              {serviceCardData.map(({ key, title, paragraph, Icon }) => {
+                return (
+                  <ServiceCard
+                    key={key}
+                    title={title}
+                    paragraph={paragraph}
+                    Icon={Icon}
+                  />
+                );
+              })}
+            </Grid>
+          </Container>
+
+          <Container component="section" sx={{ display: "grid", gap: "40px" }}>
             <Box display="grid" gap="15px">
               <Typography
                 variant="h4"
@@ -387,6 +438,37 @@ const companyValues = [
     key: "transparencia",
     label: "Transparencia",
     Icon: PlagiarismOutlined,
+  },
+];
+
+const serviceCardData = [
+  {
+    key: "Preparacion",
+    title: "Preparación de documentos",
+    paragraph:
+      "Asistencia en la recopilación y organización de todos los documentos necesarios para tu solicitud de visa, asegurando que cumplas con los requisitos y aumentando tus posibilidades de éxito.",
+    Icon: Description,
+  },
+  {
+    key: "Capacitacion",
+    title: "Capacitación para la entrevista consular",
+    paragraph:
+      "Te preparamos de manera integral para tu entrevista consular, proporcionándote herramientas y estrategias para responder de manera efectiva a las preguntas del oficial consular y aumentar tus posibilidades de aprobación.",
+    Icon: Diversity3,
+  },
+  {
+    key: "pagos",
+    title: "Pagos y programación de citas",
+    paragraph:
+      "Facilitamos el proceso al encargarnos de los pagos necesarios y programar citas en las embajadas o consulados, ahorrándote tiempo y brindándote un servicio eficiente.",
+    Icon: MonetizationOn,
+  },
+  {
+    key: "Asistencia",
+    title: "Asistencia con el formulario DS-160",
+    paragraph:
+      "Nos encargamos de completar el formulario DS-160 requerido para tu solicitud de visa, brindándote orientación paso a paso y asegurándonos de que proporciones la información correcta.",
+    Icon: HowToReg,
   },
 ];
 
