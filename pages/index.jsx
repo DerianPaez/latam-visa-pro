@@ -1,4 +1,16 @@
-import { Box, Button, Container, Grid, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Paper,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 import {
   Facebook,
   Instagram,
@@ -11,6 +23,7 @@ import {
   Diversity3,
   MonetizationOn,
   HowToReg,
+  Send,
 } from "@mui/icons-material";
 import Link from "next/link";
 import Image from "next/image";
@@ -25,6 +38,12 @@ export default function Home() {
 
   const handleChange = (panel) => (_event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
+  };
+
+  const [visa, setVisa] = useState("");
+
+  const handleChangeSelect = (event) => {
+    setVisa(event.target.value);
   };
 
   return (
@@ -188,7 +207,7 @@ export default function Home() {
 
           <Container
             component="section"
-            sx={{ marginBottom: { xs: "", md: "16px" } }}
+            sx={{ margin: { xs: "", md: "16px 0" } }}
           >
             <Box
               borderRadius="10px"
@@ -200,7 +219,6 @@ export default function Home() {
               }}
             >
               <Box
-                borderRadius="10px"
                 sx={{
                   paddingLeft: { sx: "0", md: "30px" },
                   height: "calc(100% + 16px + 16px)",
@@ -218,6 +236,7 @@ export default function Home() {
                     objectFit: "cover",
                     objectPosition: "center",
                     display: "block",
+                    borderRadius: "10px",
                   }}
                 />
               </Box>
@@ -298,7 +317,7 @@ export default function Home() {
                   sm: "1fr 1fr",
                 },
                 placeContent: "center",
-                padding: { xs: 0, md: "0 50px", xl: "0 80px" },
+                padding: { xs: "0", md: "0 50px" },
               }}
             >
               {serviceCardData.map(({ key, title, paragraph, Icon }) => {
@@ -381,6 +400,142 @@ export default function Home() {
                 Get Started
               </Button>
             </Box>
+          </Container>
+
+          <Container component="section" sx={{ display: "grid", gap: "40px" }}>
+            <Grid
+              sx={{
+                display: "grid",
+                gap: "15px",
+                placeContent: "center",
+              }}
+            >
+              <Typography
+                variant="h4"
+                component="h2"
+                color="primary"
+                fontWeight="bold"
+                textAlign="center"
+              >
+                Contáctanos
+              </Typography>
+              <Typography
+                component="p"
+                color="secondary"
+                textAlign="center"
+                sx={{ maxWidth: "660px", margin: "0 auto" }}
+              >
+                Nuestro equipo de expertos está listo para escuchar tus
+                necesidades y proporcionarte el apoyo personalizado que
+                necesitas.
+              </Typography>
+            </Grid>
+            <FormControl
+              component="form"
+              action="https://formsubmit.co/rukypaez444@gmail.com"
+              method="POST"
+              sx={{
+                display: "grid",
+                gap: "15px",
+                padding: ["", "", "0 50px", "0 150px"],
+              }}
+            >
+              <Grid
+                sx={{
+                  display: "grid",
+                  gridTemplateColumns: { sx: "1fr", sm: "1fr 1fr" },
+                  gap: "15px",
+                }}
+              >
+                {inputData.map(({ id, label, type, name }) => {
+                  return (
+                    <TextField
+                      key={id}
+                      label={label}
+                      color="secondary"
+                      type={type}
+                      name={name}
+                      InputLabelProps={{
+                        sx: {
+                          color: "#7B809A",
+                        },
+                      }}
+                      InputProps={{
+                        sx: {
+                          borderRadius: "8px",
+                          boxShadow: "0px 2px 8px -2px rgb(0 0 0 / 30%)",
+                          "& fieldset": { border: "none" },
+                        },
+                      }}
+                    />
+                  );
+                })}
+                <FormControl fullWidth>
+                  <InputLabel
+                    sx={{
+                      color: "#7B809A !important",
+                    }}
+                    id="demo-simple-select-label"
+                  >
+                    Tipo de visa
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={visa}
+                    label="Tipo de visa"
+                    name="tipo de visa"
+                    onChange={handleChangeSelect}
+                    sx={{
+                      boxShadow: "0px 2px 8px -2px rgb(0 0 0 / 30%)",
+                      borderRadius: "8px",
+                      ".MuiOutlinedInput-notchedOutline": {
+                        border: "none !important",
+                      },
+                    }}
+                  >
+                    <MenuItem value="Visa estudiante">Visa estudiante</MenuItem>
+                    <MenuItem value="Visa trabajo">Visa trabajo</MenuItem>
+                    <MenuItem value="Visa turismo">Visa turismo</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <TextField
+                id="messageTextarea"
+                label="Mensaje"
+                multiline
+                name="message"
+                rows={6}
+                color="secondary"
+                InputLabelProps={{
+                  sx: {
+                    color: "#7B809A",
+                  },
+                }}
+                InputProps={{
+                  sx: {
+                    borderRadius: "8px",
+                    boxShadow: "0px 2px 8px -2px rgb(0 0 0 / 30%)",
+                    "& fieldset": { border: "none" },
+                  },
+                }}
+              />
+              <Button
+                variant="contained"
+                endIcon={<Send />}
+                color="action"
+                type="submit"
+                sx={{
+                  borderRadius: "8px",
+                  width: "max-content",
+                  placeSelf: "center",
+                }}
+              >
+                Enviar
+              </Button>
+
+              <input type="hidden" name="_next" value="http://localhost:3000" />
+            </FormControl>
           </Container>
         </Paper>
       </Box>
@@ -561,5 +716,26 @@ const FAQ = [
     question: "¿Ofrecen asesoría para la renovación de visas?",
     answer:
       "Sí, ofrecemos asesoría para la renovación de visas, ayudándote a comprender los requisitos y a preparar los documentos necesarios.",
+  },
+];
+
+const inputData = [
+  {
+    id: "inputName",
+    label: "Nombre",
+    type: "text",
+    name: "name",
+  },
+  {
+    id: "inputTel",
+    label: "Teléfono",
+    type: "tel",
+    name: "phone",
+  },
+  {
+    id: "inputEmail",
+    label: "Correo",
+    type: "email",
+    name: "email",
   },
 ];
