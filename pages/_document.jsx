@@ -18,7 +18,13 @@ export default function MyDocument(props) {
         {/* PWA primary color */}
         <meta name="theme-color" content={theme.palette.primary.main} />
         <link rel="shortcut icon" href="/favicon.svg" />
+        {/* <link rel="canonical" href="https://wwww.savteksystems.com" /> */}
         <meta name="emotion-insertion-point" content="" />
+        <meta name="description" content="" />
+        <meta name="og:title" content="Latam Visa Pro" />
+        <meta name="og:description" content="" />
+        <meta name="og:type" content="website" />
+        <meta name="og:site_name" content="Latam Visa Pro" />
         {emotionStyleTags}
       </Head>
       <body style={{ backgroundColor: "#EDEFF2" }}>
