@@ -31,7 +31,7 @@ import VisaCard from "../src/components/VisaCard";
 import CompanyValue from "../src/components/CompanyValue";
 import AccordionItem from "../src/components/AccordionItem";
 import { useState } from "react";
-import ServiceCard from "../src/components/serviceCard";
+import ServiceCard from "../src/components/ServiceCard";
 
 export default function Home() {
   const [expanded, setExpanded] = useState(false);
