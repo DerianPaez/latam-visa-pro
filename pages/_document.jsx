@@ -9,7 +9,11 @@ export default function MyDocument(props) {
   const { emotionStyleTags } = props;
 
   return (
-    <Html lang="es" className={inter.className}>
+    <Html
+      lang="es"
+      className={inter.className}
+      style={{ scrollBehavior: "smooth" }}
+    >
       <Head>
         {/* PWA primary color */}
         <meta name="theme-color" content={theme.palette.primary.main} />

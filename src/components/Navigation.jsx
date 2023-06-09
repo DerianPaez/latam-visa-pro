@@ -23,7 +23,6 @@ export default function Navigation() {
   };
 
   return (
-    // <Container sx={{ padding: "25px 0" }}>
     <AppBar
       position="fixed"
       color="white"
@@ -41,24 +40,28 @@ export default function Navigation() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ gap: { lg: "20px" } }}>
-          <Box
-            component="img"
-            src="/icons/logo-mobile.svg"
-            alt="Logo LATAMVISAPRO"
-            sx={{
-              flexGrow: 0,
-              display: { xs: "flex", sm: "none" },
-            }}
-          />
-          <Box
-            component="img"
-            src="/icons/logo.svg"
-            alt="Logo LATAMVISAPRO"
-            sx={{
-              flexGrow: 0,
-              display: { xs: "none", sm: "flex" },
-            }}
-          />
+          <Link href="/">
+            <Box
+              component="img"
+              src="/icons/logo-mobile.svg"
+              alt="Logo LATAMVISAPRO"
+              sx={{
+                flexGrow: 0,
+                display: { xs: "flex", sm: "none" },
+              }}
+            />
+          </Link>
+          <Link href="/">
+            <Box
+              component="img"
+              src="/icons/logo.svg"
+              alt="Logo LATAMVISAPRO"
+              sx={{
+                flexGrow: 0,
+                display: { xs: "none", sm: "flex" },
+              }}
+            />
+          </Link>
 
           <Box
             sx={{
@@ -103,6 +106,7 @@ export default function Navigation() {
                 >
                   <Link
                     href={route}
+                    scroll={!route.includes("/#")}
                     style={{
                       padding: "6px 16px",
                       width: "100%",
@@ -126,20 +130,27 @@ export default function Navigation() {
             }}
           >
             {headerLinks.map(({ key, label, route }) => (
-              <Button
+              <Link
                 key={key}
                 href={route}
-                onClick={handleCloseNavMenu}
-                sx={{
-                  my: 2,
-                  color: "white",
-                  display: "block",
-                  textTransform: "capitalize",
-                  minWidth: "initial",
-                }}
+                scroll={!route.startsWith("/#")}
+                style={{ textDecoration: "none", color: "#3C3B6E" }}
               >
-                {label}
-              </Button>
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    textTransform: "capitalize",
+                    minWidth: "initial",
+                    fontSize: "16px",
+                    padding: "6px 12px",
+                  }}
+                >
+                  {label}
+                </Button>
+              </Link>
             ))}
           </Box>
 
@@ -155,7 +166,6 @@ export default function Navigation() {
         </Toolbar>
       </Container>
     </AppBar>
-    // </Container>
   );
 }
 
@@ -166,28 +176,28 @@ const headerLinks = [
     route: "/",
   },
   {
-    key: "servicios",
-    label: "Servicios",
-    route: "#servicios",
-  },
-  {
     key: "visas",
     label: "Visas",
-    route: "#visas",
+    route: "/#visas",
   },
   {
     key: "nosotros",
     label: "Nosotros",
-    route: "#nosotros",
+    route: "/#nosotros",
+  },
+  {
+    key: "servicios",
+    label: "Servicios",
+    route: "/#servicios",
   },
   {
     key: "faq",
     label: "FAQ",
-    route: "#faq",
+    route: "/#faq",
   },
   {
     key: "contacto",
     label: "Contácto",
-    route: "#contacto",
+    route: "/#contacto",
   },
 ];

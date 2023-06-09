@@ -145,6 +145,7 @@ export default function Home() {
           </Box>
         </Grid>
       </Container>
+
       <Box sx={{ padding: { xs: "0 10px", sm: "0 30px" } }}>
         <Paper
           elevation={3}
@@ -159,7 +160,11 @@ export default function Home() {
             gap: "100px",
           }}
         >
-          <Container component="section" sx={{ display: "grid", gap: "40px" }}>
+          <Container
+            id="visas"
+            component="section"
+            sx={{ display: "grid", gap: "40px" }}
+          >
             <Grid
               sx={{
                 display: "grid",
@@ -206,6 +211,7 @@ export default function Home() {
           </Container>
 
           <Container
+            id="nosotros"
             component="section"
             sx={{ margin: { xs: "", md: "16px 0" } }}
           >
@@ -281,7 +287,11 @@ export default function Home() {
             </Box>
           </Container>
 
-          <Container component="section" sx={{ display: "grid", gap: "40px" }}>
+          <Container
+            id="servicios"
+            component="section"
+            sx={{ display: "grid", gap: "40px" }}
+          >
             <Grid
               sx={{
                 display: "grid",
@@ -333,7 +343,11 @@ export default function Home() {
             </Grid>
           </Container>
 
-          <Container component="section" sx={{ display: "grid", gap: "40px" }}>
+          <Container
+            id="faq"
+            component="section"
+            sx={{ display: "grid", gap: "40px" }}
+          >
             <Box display="grid" gap="15px">
               <Typography
                 variant="h4"
@@ -402,7 +416,11 @@ export default function Home() {
             </Box>
           </Container>
 
-          <Container component="section" sx={{ display: "grid", gap: "40px" }}>
+          <Container
+            id="contacto"
+            component="section"
+            sx={{ display: "grid", gap: "40px" }}
+          >
             <Grid
               sx={{
                 display: "grid",
@@ -475,12 +493,10 @@ export default function Home() {
                     sx={{
                       color: "#7B809A !important",
                     }}
-                    id="demo-simple-select-label"
                   >
                     Tipo de visa
                   </InputLabel>
                   <Select
-                    labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={visa}
                     label="Tipo de visa"
@@ -501,7 +517,6 @@ export default function Home() {
                 </FormControl>
               </Grid>
               <TextField
-                id="messageTextarea"
                 label="Mensaje"
                 multiline
                 name="message"
