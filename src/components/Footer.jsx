@@ -15,7 +15,7 @@ export default function Footer() {
       >
         {footerLinks.map(({ key, label, route }) => {
           return (
-            <Link key={key} href={route}>
+            <Link key={key} href={route} scroll={!route.startsWith("/#")}>
               <Button
                 component="button"
                 variant="text"
@@ -87,29 +87,29 @@ const footerLinks = [
     route: "/",
   },
   {
-    key: "servicios",
-    label: "Servicios",
-    route: "#servicios",
-  },
-  {
     key: "visas",
     label: "Visas",
-    route: "#visas",
+    route: "/#visas",
   },
   {
     key: "nosotros",
     label: "Nosotros",
-    route: "#nosotros",
+    route: "/#nosotros",
   },
   {
-    key: "contacto",
-    label: "Contácto",
-    route: "#contacto",
+    key: "servicios",
+    label: "Servicios",
+    route: "/#servicios",
   },
   {
     key: "faq",
     label: "FAQ",
-    route: "#faq",
+    route: "/#faq",
+  },
+  {
+    key: "contacto",
+    label: "Contácto",
+    route: "/#contacto",
   },
   {
     key: "terminos",
