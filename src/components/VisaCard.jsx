@@ -9,7 +9,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-export default function VisaCard({ title, paragraph, image }) {
+export default function VisaCard({ title, paragraph, image, link }) {
   return (
     <Card
       elevation={4}
@@ -60,7 +60,7 @@ export default function VisaCard({ title, paragraph, image }) {
           </Typography>
         </CardContent>
         <CardActions sx={{ padding: "0" }}>
-          <Link href="/">
+          <Link href={link} target="_blank">
             <Button variant="outlined" size="small" color="primary">
               Consultar
             </Button>

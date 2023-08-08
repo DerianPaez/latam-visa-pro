@@ -1,6 +1,6 @@
-import { Facebook, Instagram, WhatsApp } from "@mui/icons-material";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import Link from "next/link";
+import { socialMedia } from "../constants/socialMedia";
 
 export default function Footer() {
   return (
@@ -44,10 +44,10 @@ export default function Footer() {
           placeItems: "center",
         }}
       >
-        {footerMedia.map(({ key, route, Icon }) => {
+        {socialMedia.map(({ key, route, Icon }) => {
           return (
             <Grid key={key}>
-              <Link href={route} style={{ display: "flex" }}>
+              <Link href={route} target="_blank" style={{ display: "flex" }}>
                 <Icon color="primary" />
               </Link>
             </Grid>
@@ -61,24 +61,6 @@ export default function Footer() {
     </Container>
   );
 }
-
-const footerMedia = [
-  {
-    key: "facebook",
-    route: "/",
-    Icon: Facebook,
-  },
-  {
-    key: "instagram",
-    route: "/",
-    Icon: Instagram,
-  },
-  {
-    key: "whatsapp",
-    route: "/",
-    Icon: WhatsApp,
-  },
-];
 
 const footerLinks = [
   {

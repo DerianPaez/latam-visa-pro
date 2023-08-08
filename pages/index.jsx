@@ -12,9 +12,6 @@ import {
   Typography,
 } from "@mui/material";
 import {
-  Facebook,
-  Instagram,
-  WhatsApp,
   EmojiEventsOutlined,
   HandshakeOutlined,
   PlagiarismOutlined,
@@ -32,6 +29,7 @@ import CompanyValue from "../src/components/CompanyValue";
 import AccordionItem from "../src/components/AccordionItem";
 import { useState } from "react";
 import ServiceCard from "../src/components/ServiceCard";
+import { socialMedia } from "../src/constants/socialMedia";
 
 export default function Home() {
   const [expanded, setExpanded] = useState(false);
@@ -115,11 +113,12 @@ export default function Home() {
                 width: "max-content",
                 placeSelf: "center",
               }}
+              href="/#contacto"
             >
               contactanos
             </Button>
           </Grid>
-          <Box textAlign="center">
+          <Box textAlign="center" sx={{ display: "grid", gap: "10px" }}>
             <Typography color="#fff">Encuentrános en:</Typography>
             <Grid
               container
@@ -128,15 +127,19 @@ export default function Home() {
                 gridAutoColumns: "max-content",
                 gridAutoFlow: "column",
                 placeContent: "center",
-                gap: "20px",
+                gap: "10px",
                 placeItems: "center",
               }}
             >
-              {heroMedia.map(({ key, route, Icon }) => {
+              {socialMedia.map(({ key, route, Icon }) => {
                 return (
                   <Grid key={key}>
-                    <Link href={route} style={{ display: "flex" }}>
-                      <Icon color="white" />
+                    <Link
+                      href={route}
+                      target="_blank"
+                      style={{ display: "flex" }}
+                    >
+                      <Icon color="white" colorFill="white" />
                     </Link>
                   </Grid>
                 );
@@ -410,8 +413,10 @@ export default function Home() {
                 variant="contained"
                 color="action"
                 sx={{ borderRadius: "8px", width: "max-content" }}
+                href="https://api.whatsapp.com/send/?phone=593939513372"
+                target="_blank"
               >
-                Get Started
+                comunicate
               </Button>
             </Box>
           </Container>
@@ -450,7 +455,7 @@ export default function Home() {
             </Grid>
             <FormControl
               component="form"
-              action="https://formsubmit.co/rukypaez444@gmail.com"
+              action="https://formsubmit.co/info@latamvisapro.com"
               method="POST"
               sx={{
                 display: "grid",
@@ -549,7 +554,11 @@ export default function Home() {
                 Enviar
               </Button>
 
-              <input type="hidden" name="_next" value="http://localhost:3000" />
+              <input
+                type="hidden"
+                name="_next"
+                value="http://latamvisapro.com"
+              />
             </FormControl>
           </Container>
         </Paper>
@@ -558,24 +567,6 @@ export default function Home() {
   );
 }
 
-const heroMedia = [
-  {
-    key: "facebook",
-    route: "/",
-    Icon: Facebook,
-  },
-  {
-    key: "instagram",
-    route: "/",
-    Icon: Instagram,
-  },
-  {
-    key: "whatsapp",
-    route: "/",
-    Icon: WhatsApp,
-  },
-];
-
 const visaCardData = [
   {
     key: "visa estudiante",
@@ -583,6 +574,7 @@ const visaCardData = [
     paragraph:
       "Estudia en el extranjero y amplía tus horizontes académicos con una experiencia única y enriquecedora.",
     image: "/images/visa-estudiante.jpg",
+    link: "https://api.whatsapp.com/send/?phone=593939513372&text=Hola%2C+Me+encantar%C3%ADa+consultar+sobre+la+visa+de+estudiante.&type=phone_number&app_absent=0",
   },
   {
     key: "visa trabajo",
@@ -590,6 +582,7 @@ const visaCardData = [
     paragraph:
       "Convierte tus habilidades y experiencia en  oportunidades laborales internacionales.",
     image: "/images/visa-trabajo.jpg",
+    link: "https://api.whatsapp.com/send/?phone=593939513372&text=Hola%2C+Me+encantar%C3%ADa+consultar+sobre+la+visa+de+trabajo.&type=phone_number&app_absent=0",
   },
   {
     key: "visa turismo",
@@ -597,6 +590,7 @@ const visaCardData = [
     paragraph:
       "Descubre emocionantes nuevos destinos y sumérgete en experiencias culturales únicas.",
     image: "/images/visa-turismo.jpg",
+    link: "https://api.whatsapp.com/send/?phone=593939513372&text=Hola%2C+Me+encantar%C3%ADa+consultar+sobre+la+visa+de+turismo.&type=phone_number&app_absent=0",
   },
 ];
 

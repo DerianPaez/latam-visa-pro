@@ -39,7 +39,7 @@ export default function Navigation() {
       }}
     >
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{ gap: { lg: "20px" } }}>
+        <Toolbar disableGutters>
           <Link href="/">
             <Box
               component="img"
@@ -127,6 +127,7 @@ export default function Navigation() {
               display: { xs: "none", lg: "flex" },
               justifyContent: "end",
               textAlign: "right",
+              marginRight: { lg: "20px" },
             }}
           >
             {headerLinks.map(({ key, label, route }) => (
@@ -159,6 +160,8 @@ export default function Navigation() {
               variant="contained"
               color="action"
               sx={{ borderRadius: "8px" }}
+              href="https://api.whatsapp.com/send/?phone=593939513372"
+              target="_blank"
             >
               whatsapp
             </Button>
