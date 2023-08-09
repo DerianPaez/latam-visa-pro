@@ -18,11 +18,22 @@ export default function MyDocument(props) {
         {/* PWA primary color */}
         <meta name="theme-color" content={theme.palette.primary.main} />
         <link rel="shortcut icon" href="/favicon.svg" />
-        {/* <link rel="canonical" href="https://wwww.savteksystems.com" /> */}
+        <link rel="canonical" href="https://wwww.latamvisapro.com" />
+        meta
         <meta name="emotion-insertion-point" content="" />
-        <meta name="description" content="" />
+        <meta
+          name="description"
+          content="Especialistas en Asesoramiento de Visas. Simplificamos el proceso para que puedas explorar el mundo sin preocupaciones. ¡Comienza tu aventura con nosotros!"
+        />
+        <meta
+          name="keywords"
+          content="agencia de visas, asesoramiento de visas, visa usa ecuador, visa no migrante, visa estados unidos ecuador, visa americana ecuador, tramite de visas, embajada, consulado"
+        />
         <meta name="og:title" content="Latam Visa Pro" />
-        <meta name="og:description" content="" />
+        <meta
+          name="og:description"
+          content="Especialistas en Asesoramiento de Visas. Simplificamos el proceso para que puedas explorar el mundo sin preocupaciones. ¡Comienza tu aventura con nosotros!"
+        />
         <meta name="og:type" content="website" />
         <meta name="og:site_name" content="Latam Visa Pro" />
         {emotionStyleTags}
